@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crown | Royal Aesthetic</title>
+    <style>
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at 50% 40%, #1a1a1a 0%, #000000 80%);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Didot', 'Bodoni MT', 'Times New Roman', serif;
+            color: #d4af37;
+            perspective: 1000px;
+        }
+
+        /* --- CELEBRATION CANVAS --- */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        /* --- LAYOUT CONTAINER --- */
+        .royal-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeInSlow 2.5s ease-out forwards;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        /* --- THE CROWN (SVG WRAPPER) --- */
+        .crown-wrapper {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 10px auto;
+            position: relative;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            /* دوران ملكي هادئ */
+            animation: royalTurn 8s infinite ease-in-out alternate;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .king-name {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            position: relative;
+            background: linear-gradient(to bottom right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 1.5s 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+        }
+
+        .subtitle {
+            font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #888;
+            font-weight: 300;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 1.5s 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+        }
+
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #bf953f, transparent);
+            margin: 20px auto;
+            opacity: 0.5;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInSlow { to { opacity: 1; } }
+        @keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
+        @keyframes royalTurn {
+            from { transform: rotateY(-15deg); }
+            to { transform: rotateY(15deg); }
+        }
+
+        .sparkle {
+            transform-origin: center;
+            animation: sparkleTwinkle 3s infinite ease-in-out;
+        }
+        @keyframes sparkleTwinkle {
+            0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.2) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 5px white); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="royal-container">
+        <!-- THE CROWN -->
+        <div class="crown-wrapper" id="crown">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#996515;" />
+                        <stop offset="20%" style="stop-color:#FFD700;" />
+                        <stop offset="40%" style="stop-color:#996515;" />
+                        <stop offset="60%" style="stop-color:#E6BE8A;" />
+                        <stop offset="100%" style="stop-color:#8B4513;" />
+                    </linearGradient>
+
+                    <linearGradient id="gold-shadow" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#4a320a;" />
+                        <stop offset="50%" style="stop-color:#754f0f;" />
+                        <stop offset="100%" style="stop-color:#3d2908;" />
+                    </linearGradient>
+
+                    <radialGradient id="ruby-gradient" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" style="stop-color:#ff9999;" />
+                        <stop offset="20%" style="stop-color:#ff0000;" />
+                        <stop offset="100%" style="stop-color:#550000;" />
+                    </radialGradient>
+
+                    <radialGradient id="sapphire-gradient" cx="30%" cy="30%" r="70%">
+                        <stop offset="0%" style="stop-color:#99ccff;" />
+                        <stop offset="20%" style="stop-color:#0033cc;" />
+                        <stop offset="100%" style="stop-color:#000033;" />
+                    </radialGradient>
+
+                    <radialGradient id="diamond-gradient" cx="40%" cy="40%" r="60%">
+                        <stop offset="0%" style="stop-color:#ffffff;" />
+                        <stop offset="100%" style="stop-color:#a0a0a0;" />
+                    </radialGradient>
+
+                    <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+                        <feOffset dx="1" dy="2" result="offsetBlur"/>
+                        <feFlood flood-color="rgba(0,0,0,0.6)" result="color"/>
+                        <feComposite in="color" in2="offsetBlur" operator="in" result="shadow"/>
+                        <feComposite in="shadow" in2="SourceAlpha" operator="in" result="shadow" />
+                        <feMerge> 
+                            <feMergeNode in="shadow"/>
+                            <feMergeNode in="SourceGraphic"/> 
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- 1. Back Arches -->
+                <path d="M50 140 Q 100 80 150 140" fill="none" stroke="url(#gold-shadow)" stroke-width="8" />
+                <path d="M100 140 L 100 70" fill="none" stroke="url(#gold-shadow)" stroke-width="8" />
+
+                <!-- 2. The Base Band -->
+                <path d="M40 140 Q 100 155 160 140 L 160 165 Q 100 180 40 165 Z" fill="url(#gold-gradient)" filter="url(#inset-shadow)" />
+
+                <!-- 3. Front Shapes -->
+                <path d="M85 140 L 85 100 Q 80 90 70 95 Q 85 70 100 50 Q 115 70 130 95 Q 120 90 115 100 L 115 140 Z" fill="url(#gold-gradient)" filter="url(#inset-shadow)" />
+                <path d="M45 140 L 45 110 Q 30 90 50 115 L 65 140 Z" fill="url(#gold-gradient)" filter="url(#inset-shadow)" />
+                <path d="M155 140 L 155 110 Q 170 90 150 115 L 135 140 Z" fill="url(#gold-gradient)" filter="url(#inset-shadow)" />
+
+                <!-- 4. Gemstones -->
+                <circle cx="100" cy="115" r="12" fill="url(#ruby-gradient)" stroke="#8B0000" stroke-width="1"/>
+                <ellipse cx="96" cy="111" rx="3" ry="2" fill="white" opacity="0.6" transform="rotate(-45 96 111)" />
+                
+                <circle cx="70" cy="158" r="5" fill="url(#sapphire-gradient)" stroke="#000033" stroke-width="0.5" />
+                <circle cx="130" cy="158" r="5" fill="url(#sapphire-gradient)" stroke="#000033" stroke-width="0.5" />
+                
+                <circle cx="100" cy="162" r="6" fill="url(#diamond-gradient)" stroke="#555" stroke-width="0.5" />
+
+                <!-- الجوهرة العلوية بدلاً من الصليب -->
+                <circle cx="100" cy="50" r="5" fill="url(#ruby-gradient)" stroke="#8B0000" stroke-width="1" />
+
+                <!-- 5. Shine -->
+                <g class="sparkle" style="transform-origin: 100px 115px;">
+                    <path d="M100 100 L 102 115 L 100 130 L 98 115 Z" fill="white" />
+                    <path d="M85 115 L 100 117 L 115 115 L 100 113 Z" fill="white" />
+                </g>
+            </svg>
+        </div>
+
+        <!-- TEXT CONTENT -->
+        <h1 class="king-name" id="kingNameDisplay">King Motaz</h1>
+        <div class="divider"></div>
+        <p class="subtitle" id="taglineDisplay">
+            Crowned by discipline. Sustained by consistency.
+        </p>
+    </div>
+
+    <script>
+        const CONFIG = {
+            name: "King Motaz",
+            subtitle: "Crowned by discipline. Sustained by consistency."
+        };
+
+        // --- Confetti Logic ---
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 60;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 6 + 4;
+                this.speed = Math.random() * 2 + 1;
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 5 - 2.5;
+                // Gold variations
+                const colors = ['#D4AF37', '#FFD700', '#B8860B', '#F1C40F'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.opacity = Math.random() * 0.5 + 0.5;
+            }
+            update() {
+                this.y += this.speed;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                // Draw a small metallic rectangle
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size / 2);
+                // Add a small highlight for metallic look
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size / 2, this.size / 4);
+                ctx.restore();
+            }
+        }
+
+        function initConfetti() {
+            resizeCanvas();
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+
+        // --- Interaction & Setup ---
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('kingNameDisplay').textContent = CONFIG.name;
+            document.getElementById('taglineDisplay').textContent = CONFIG.subtitle;
+            
+            initConfetti();
+            animateConfetti();
+
+            const crown = document.getElementById('crown');
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                const midX = window.innerWidth / 2;
+                const midY = window.innerHeight / 2;
+                const rotateY = ((x - midX) / midX) * 10; 
+                const rotateX = -((y - midY) / midY) * 10; 
+                crown.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+        });
+
+        window.addEventListener('resize', resizeCanvas);
+    </script>
+</body>
+</html>
