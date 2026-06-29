@@ -87,17 +87,19 @@
         }
 
         .subtitle {
-            font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
-            font-size: clamp(0.7rem, 2vw, 0.9rem);
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            color: #888;
-            font-weight: 300;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideUp 1.5s 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-        }
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+    text-transform: none; /* يمنع تحويل النص كله لكابيتال */
+    letter-spacing: 1px;  /* يقلل المسافات بين الحروف */
+    color: #ddd;          /* لون أوضح */
+    font-weight: 600;     /* تخانة متوسطة */
+    line-height: 1.5;     /* يسهل القراءة */
+    text-align: center;
 
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 1.5s 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
         .divider {
             width: 50px;
             height: 1px;
@@ -213,7 +215,7 @@
         <h1 class="king-name" id="kingNameDisplay"> studyyy  ملكة المجتمع  </h1>
         <div class="divider"></div>
         <p class="subtitle" id="taglineDisplay">
-            <b>👑 هات اللي عندك من اجتهاد... التاج مش بيتسلّم لولاد 👑</b>
+            👑 هات اللي عندك من اجتهاد... التاج مش بيتسلّم لولاد 👑
         </p>
     </div>
 
